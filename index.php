@@ -82,6 +82,7 @@
 
     <main class="form-signin w-100 m-auto">
 
+
         <form action="<?= htmlspecialchars(basename($_SERVER['PHP_SELF'])) ?>" method="post" class="container needs-validation" novalidate>
 
             <div class="mb-3">
@@ -101,6 +102,11 @@
             </select>
 
             <button class="btn btn-warning w-100 py-2" type="submit" name="submit">EXPORT</button>
+
+            <div class="msg w-100 my-5">
+                <p></p>
+            </div>
+
             <p class="mt-5 mb-3 text-body-secondary">&copy; <a href="https://github.com/KianHmz" target="_blank">KianHmz</a></p>
 
         </form>
@@ -111,35 +117,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="assets/js/color-modes.js"></script>
-    <script>
-        document.querySelector("form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            let form = event.target;
-
-            if (!form.checkValidity()) {
-                event.stopPropagation();
-            }
-
-            form.classList.add("was-validated");
-        });
-    </script>
-    <script>
-        $(document).ready(function() {
-
-            $('form').submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    type: "post",
-                    url: "process.php",
-                    data: $(this).serialize(),
-                    success: function(response) {
-                        console.log(response);
-                    }
-                });
-            })
-
-        });
-    </script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/ajax-handler.js"></script>
 </body>
 
 </html>

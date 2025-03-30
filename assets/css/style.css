@@ -35,3 +35,8 @@ button[type="submit"] {
   outline: 1px solid #ffc107 !important; 
   box-shadow: 0 0 7px #ffc107 !important; 
 }
+
+.msg{
+  background-color: #443627;
+  color: rgb(175, 175, 175);
+}

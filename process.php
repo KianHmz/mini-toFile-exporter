@@ -11,7 +11,7 @@ if (!($_SERVER['REQUEST_METHOD'] === 'POST')) {
     die("Error: invalid request !!!");
 }
 if (empty($_POST['title']) || empty($_POST['content']) || empty($_POST['type'])) {
-    die("Error: some required data is empty !!!");
+    die("Error: some requireds are empty !!!");
 }
 
 // declare variables
