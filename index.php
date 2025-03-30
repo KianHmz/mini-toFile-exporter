@@ -82,25 +82,25 @@
 
     <main class="form-signin w-100 m-auto">
 
-        <form class="container needs-validation" novalidate>
+        <form action="<?= htmlspecialchars(basename($_SERVER['PHP_SELF'])) ?>" method="post" class="container needs-validation" novalidate>
 
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Title</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="" required>
+                <input name="title" type="text" class="form-control" id="exampleFormControlInput1" placeholder="" required>
 
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Content</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                <textarea name="content" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
             </div>
-            <select class="form-select" aria-label="Default select example" required>
-                <option value=".txt" selected>.txt</option>
-                <option value=".json">.json</option>
-                <option value=".pdf">.pdf</option>
-                <option value=".csv">.csv</option>
+            <select name="type" class="form-select" aria-label="Default select example" required>
+                <option value="txt" selected>.txt</option>
+                <option value="json">.json</option>
+                <option value="xml">.xml</option>
+                <option value="csv">.csv</option>
             </select>
 
-            <button class="btn btn-warning w-100 py-2" type="submit">EXPORT</button>
+            <button class="btn btn-warning w-100 py-2" type="submit" name="submit">EXPORT</button>
             <p class="mt-5 mb-3 text-body-secondary">&copy; <a href="https://github.com/KianHmz" target="_blank">KianHmz</a></p>
 
         </form>
@@ -121,6 +121,23 @@
             }
 
             form.classList.add("was-validated");
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            $('form').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "post",
+                    url: "process.php",
+                    data: $(this).serialize(),
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+            })
+
         });
     </script>
 </body>
