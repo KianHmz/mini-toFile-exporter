@@ -15,9 +15,10 @@ if (empty($_POST['title']) || empty($_POST['content']) || empty($_POST['type']))
 }
 
 // declare variables
+$namespace = "Exporter\\";
 [$title, $content, $type] = [$_POST['title'], $_POST['content'], $_POST['type']];
 
 // process
-$className = "Exporter\\" . (strtoupper($type)) . "Exporter";
+$className = $namespace . (strtoupper($type)) . "Exporter";
 $obj = new $className(['title' => $title, 'content' => $content]);
 $obj->export();
